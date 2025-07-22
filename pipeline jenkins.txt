@@ -1,5 +1,3 @@
-
-
 pipeline {
     agent any
     stages {
@@ -9,16 +7,46 @@ pipeline {
                 bat 'mvn clean'
             }
         }
+        stage('validate'){
+            steps{
+                echo 'validate'
+                bat 'mvn validate'
+            }
+        }
+        stage('compile'){
+            steps{
+                echo 'compile'
+                bat 'mvn compile'
+            }
+        }
+        stage('test'){
+            steps{
+                echo 'test'
+                bat 'mvn test'
+            }
+        }
         stage('Package') {
             steps {
                 echo 'Packaging...'
                 bat 'mvn package'
             }
         }
-        stage('Build') {
+        stage('verify'){
+            steps{
+                echo 'verfying....'
+                bat 'mvn verify'
+            }
+        }
+        stage('install') {
             steps {
-                echo 'Building...'
+                echo 'install...'
                 bat 'mvn install'
+            }
+        }
+        stage('build'){
+            steps{
+                echo 'building....'
+                bat 'mvn deploy'
             }
         }
     }
