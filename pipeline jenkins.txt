@@ -40,7 +40,7 @@ pipeline {
         stage('install') {
             steps {
                 echo 'install...'
-                bat 'mvn install
+                bat 'mvn install'
            
             }
         }
