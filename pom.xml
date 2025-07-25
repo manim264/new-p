@@ -97,7 +97,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>file:///C:\</url>
+         <url>file:///C:\Program Files\Apache Software Foundation\Tomcat 9\webapps:\</url>
        </repository>
    </distributionManagement>
 
