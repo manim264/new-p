@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
     stages {
@@ -7,46 +9,17 @@ pipeline {
                 bat 'mvn clean'
             }
         }
-        stage('validate'){
-            steps{
-                echo 'validate'
-                bat 'mvn validate'
-            }
-        }
-        stage('compile'){
-            steps{
-                echo 'compile'
-                bat 'mvn compile'
-            }
-        }
-        stage('test'){
-            steps{
-                echo 'test'
-                bat 'mvn test'
-            }
-        }
         stage('Package') {
             steps {
                 echo 'Packaging...'
                 bat 'mvn package'
             }
         }
-        stage('verify'){
-            steps{
-                echo 'verfying....'
-                bat 'mvn verify'
-            }
-        }
-        stage('install') {
+        stage('Build') {
             steps {
-                echo 'install...'
+                echo 'Building...'
                 bat 'mvn install'
-           
             }
         }
-        stage('deploy-to-tomcat') {
-            steps {
-                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat9', path: '', url:                                       'http://localhost:8080/')], contextPath: null, war: '**/*.war'                                                                          }
-       }
-   }
+    }
 }
